@@ -1,10 +1,10 @@
-name: Rust
+name: Verify
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
-
+    name: Verify
     runs-on: ubuntu-latest
 
     steps:
