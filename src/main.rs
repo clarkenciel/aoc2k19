@@ -1,8 +1,10 @@
 use std::env;
 
 mod challenge;
-mod one;
 mod runner;
+
+mod one;
+mod two;
 
 use runner::Runner;
 
