@@ -1,8 +1,7 @@
-use std::fs::File;
-use std::io::{self, Read};
 use std::u64;
 
 use crate::challenge;
+use crate::input;
 
 pub struct Challenge {}
 
@@ -22,15 +21,15 @@ impl Challenge {
     }
 
     fn part_one(&mut self) -> challenge::ChallengeResult {
-        input("1.txt")
-            .map_err(|e| file_read_error("one", e))
+        input::string("1", "1.txt")
+            .map_err(|e| input::read_error("one", "one", "1.txt", e))
             .and_then(|s| calculate_fuel(&mut s.lines(), fuel_requirement))
             .map(|total| println!("{}", total))
     }
 
     fn part_two(&mut self) -> challenge::ChallengeResult {
-        input("2.txt")
-            .map_err(|e| file_read_error("two", e))
+        input::string("1", "2.txt")
+            .map_err(|e| input::read_error("one", "two", "2.txt", e))
             .and_then(|s| calculate_fuel(&mut s.lines(), recursive_fuel_requirement))
             .map(|total| println!("{}", total))
     }
@@ -65,25 +64,6 @@ fn calculate_fuel<'a, I: Iterator<Item = &'a str>, F: Fn(u64) -> u64>(
                 ))
             })
     })
-}
-
-fn input_file(part: &str) -> io::Result<File> {
-    File::open(format!("inputs/1/{part:}", part = part))
-}
-
-fn input(part: &str) -> io::Result<String> {
-    input_file(part).and_then(|mut f| {
-        let mut buf = String::new();
-        f.read_to_string(&mut buf).map(|_| buf)
-    })
-}
-
-fn file_read_error(filename: &str, e: io::Error) -> challenge::Err {
-    challenge::Err::Failure(format!(
-        "Failed to read input file for part {part:} of challenge one: {err:}",
-        part = filename,
-        err = e.to_string()
-    ))
 }
 
 #[cfg(test)]
