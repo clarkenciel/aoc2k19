@@ -1,6 +1,9 @@
-use crate::challenge::Challenge;
-use crate::one;
 use std::collections::HashMap;
+
+use crate::challenge::Challenge;
+
+use crate::one;
+use crate::two;
 
 pub struct Runner {
     challenges: HashMap<&'static str, Box<dyn Challenge>>,
@@ -10,6 +13,7 @@ impl Runner {
     pub fn new() -> Self {
         let mut challenges = HashMap::new();
         challenges.insert("one", Box::new(one::Challenge::new()) as Box<dyn Challenge>);
+        challenges.insert("two", Box::new(two::Challenge::new()) as Box<dyn Challenge>);
         Self { challenges }
     }
 

@@ -1,6 +1,7 @@
 use std::env;
 
 mod challenge;
+mod input;
 mod runner;
 
 mod one;
