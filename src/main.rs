@@ -5,6 +5,7 @@ mod input;
 mod runner;
 
 mod one;
+mod three;
 mod two;
 
 use runner::Runner;
