@@ -3,6 +3,7 @@ use std::collections::HashMap;
 use crate::challenge::Challenge;
 
 use crate::one;
+use crate::three;
 use crate::two;
 
 pub struct Runner {
@@ -14,6 +15,10 @@ impl Runner {
         let mut challenges = HashMap::new();
         challenges.insert("one", Box::new(one::Challenge::new()) as Box<dyn Challenge>);
         challenges.insert("two", Box::new(two::Challenge::new()) as Box<dyn Challenge>);
+        challenges.insert(
+            "three",
+            Box::new(three::Challenge::new()) as Box<dyn Challenge>,
+        );
         Self { challenges }
     }
 
