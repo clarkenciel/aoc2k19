@@ -4,6 +4,7 @@ mod challenge;
 mod input;
 mod runner;
 
+mod four;
 mod one;
 mod three;
 mod two;

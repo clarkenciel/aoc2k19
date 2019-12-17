@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use crate::challenge::Challenge;
 
+use crate::four;
 use crate::one;
 use crate::three;
 use crate::two;
@@ -18,6 +19,10 @@ impl Runner {
         challenges.insert(
             "three",
             Box::new(three::Challenge::new()) as Box<dyn Challenge>,
+        );
+        challenges.insert(
+            "four",
+            Box::new(four::Challenge::new()) as Box<dyn Challenge>,
         );
         Self { challenges }
     }
